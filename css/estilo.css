@@ -30,7 +30,7 @@ a {
     text-decoration: none;
 }
 
-.wrapper{
+.contenedorMayor{
     display: grid;
     grid-template-columns: 1fr 4fr;
     background-color: var(--clr-prin);
@@ -48,10 +48,10 @@ aside {
     justify-content: space-between;
 }
 
-.logo{
+/* .logo{
     font-weight: 400;
     font-size: 1.3rem;
-}
+} */
 
 .menu{
     display: flex;
@@ -157,7 +157,6 @@ main{
 
 .carrito-vacio, .carrito-comprado{
     color: var(--clr-prin);
-    /* display: none; */
 }
 
 .carrito-productos{
@@ -262,4 +261,10 @@ main{
     color: var(--clr-prin);
     padding: .15rem .25rem;
     border-radius: 1rem;
+}
+
+.Logo {
+    height: 150px;
+    margin-top: 5px;
+    margin-left: 5px;
 }

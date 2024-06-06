@@ -1,5 +1,5 @@
 let productosEnCarrito = JSON.parse(localStorage.getItem("productos-en-carrito"));
-// productosEnCarrito = JSON.parse(productosEnCarrito);
+
 
 const contenedorCarritoVacio = document.querySelector("#carrito-vacio");
 const contenedorCarritoProductos = document.querySelector("#carrito-productos");
@@ -10,7 +10,7 @@ const botonVaciar = document.querySelector("#carrito-acciones-vaciar");
 const contenedorTotal = document.querySelector("#total");
 const botonComprar = document.querySelector("#carrito-acciones-comprar");
 
-
+//Funcion para ver la carga de los productos agregados desde Todos los Productos o categorias(el div creado en el HTML), mostrando los mensajes correspondientes si esta vacio o no y los parametros de titulo, cantidad, bla...//
 function cargarProductosCarrito(){
     if (productosEnCarrito && productosEnCarrito.length > 0) {
 
@@ -60,8 +60,7 @@ function cargarProductosCarrito(){
 
 cargarProductosCarrito();
 
-
-
+//Funcion para que al clickear en el tachito de eliminar, se elimine el producto del carrito//
 function actualizarBotonesEliminar() {
     const botonesEliminar = document.querySelectorAll(".carrito-producto-eliminar");
 
@@ -70,6 +69,7 @@ function actualizarBotonesEliminar() {
     });
 }
 
+//Funcion para que al eliminar un producto del carrito, se actualice la pagina y siga almacenada en el localStorage para seguir utilizando lo demas y no se modifique al cambiar de categoria por ejemplo//
 function eliminarDelCarrito(e){
     const idBoton = e.currentTarget.id;
     const index = productosEnCarrito.findIndex(producto=> producto.id === idBoton);
@@ -80,6 +80,7 @@ function eliminarDelCarrito(e){
     localStorage.setItem("productos-en-carrito",JSON.stringify(productosEnCarrito));
 }
 
+//Funcion para que al clickear en el boton "vaciar carrito", se vacie el mismo y a su vez borre el localStorage//
 botonVaciar.addEventListener("click", vaciarCarrito);
 
 function vaciarCarrito(){
@@ -88,11 +89,13 @@ function vaciarCarrito(){
     cargarProductosCarrito();
 }
 
+//Funcion para que en el <p> de Total se muestre la sumatoria de los subtotales de los productos agregados en el carrito//
 function actualizarTotal(){
     const totalCalculado = productosEnCarrito.reduce((acc, producto)=> acc + (producto.precio * producto.cantidad), 0);
     total.innerText = `$${totalCalculado}`;
 }
 
+//Funcion para que al clickear en el boton de compra, lance el mensaje de Muchas gracias por tu compra//
 botonComprar.addEventListener("click", comprarCarrito);
 function comprarCarrito(){
     productosEnCarrito.length = 0;
